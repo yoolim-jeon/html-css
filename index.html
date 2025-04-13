@@ -5,50 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .form-box{
+        width: calc(100% - 40px);
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="password"],
+    .form-box input[type="email"],
+    .form-box input[type="number"],
+    .form-box input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid black;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .button {
+        padding: 10px 20px;
+        background-color: #f1f1f1;
+        color: black;
+        border: 1px solid black;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    .button-list {
+        display: none;
+        margin-top: 10px;
+    }
+
+    input[type="checkbox"]:checked + .button-list {
+        display: block;
+    }
+
+    .button-list button {
+        padding: 8px 15px;
+        background-color: #f1f1f1;
+        color: black;
+        border: 1px solid black;
+        cursor: pointer;
+        margin-top: 5px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+
+    .button-list button:hover {
+        background-color: green;
+    }
+
+    .radio-group {
+        list-style-type: none;
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    .radio-group li {
+        margin-bottom: 10px;
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+
+    label {
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked + label {
+        background-color: green;
+        color: white;
+    }
+
+    input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid white;
+        border-radius: 4px;
+    }
+
+    .submit-btn {
+       width: 100%;
+        padding: 10px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .submit-btn:hover {
+        background-color: green;
+    }
+</style>
 <body>
-    <div>
+    <div class="form-box">
         <div>
-            <input type="text" name="id" id="id" required placeholder="아이디">@naver.com
+            <input type="text" name="id" required placeholder="아이디">@naver.com
         </div>
         <div>
-            <input type="password" name="password" id="password" required placeholder="비밀번호">
+            <input type="password" name="password" required placeholder="비밀번호">
         </div>
         <div>
-            <input type="email" name="email" id="email" placeholder="[선택]이메일 주소(비밀번호)">
+            <input type="email" name="email" placeholder="[선택]이메일 주소(비밀번호 찾기 등 본인 확인용)">
         </div>
         <div>
-            <input type="text" name="id" id="id" required placeholder="이름">
+            <input type="text" name="name" required placeholder="이름">
         </div>
         <div>
-            <input type="number" name="number" id="number" required placeholder="생년월일 8자리">
+            <input type="number" name="birth" required placeholder="생년월일 8자리">
         </div>
+
+    <label for = "toggle" class = "button">통신사 선택</label>
+    <input type = "checkbox" id = "toggle" style="display: none;">
+    <div class="button-list">
+        <button>SK</button>
+        <button>KT</button>
+        <button>LG U+</button>
+        <button>SK 알뜰폰</button>
+        <button>KT 알뜰폰</button>
+        <button>LG U+ 알뜰폰</button>
     </div>
-    <button type = "button">통신사 선택</button>
-        <ul>
-            <li><button>SK</button></li>
-            <li><button>KT</button></li>
-            <li><button>LG U+</button></li>
-            <li><button>SK 알뜰폰</button></li>
-            <li><button>KT 알뜰폰</button></li>
-            <li><button>LG U+ 알뜰폰</button></li>
-        </ul>
-    <li>
-        <input type="radio" name="gender" value="male"> 남성
-    </li>
-    <li>
-        <input type="radio" name="gender" value="female"> 여성
-    </li>
-    <li>
-        <input type="radio" name="citizenship" value="korean"> 내국인
-    </li>
-    <li>
-        <input type="radio" name="citizenship" value="foriegner"> 외국인
-    </li>
+    <ul class="radio-group">
+        <li><input type="radio" name="gender" value="male" id="male"><label for="male">남자</label></li>
+        <li><input type="radio" name="gender" value="female" id="female"><label for="female">여자</label></li>
+        <li><input type="radio" name="citizen" value="local" id="local"><label for="local">내국인</label></li>
+        <li><input type="radio" name="citizen" value="foreigner" id="foreigner"><label for="foreigner">외국인</label></li>
+    </ul>
+        
     <div>
-        <div>
-            <input type="tel" name="tel" id="tel" required placeholder="전화번호">
-        </div>
+        <input type="tel" name="tel" required placeholder="전화번호">
     </div>
-    <button type = "submit">submit</button>
+    <button type="submit" class="submit-btn">인증요청</button>
 </body>
 </html>
