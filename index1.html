@@ -2,10 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>로그인 폼</title>
+  <title>로그인 폼&TODO</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <script>
+    //로그인 폼
     const form = document.createElement('form');
 
     const usernameLabel = document.createElement('div');
@@ -19,7 +21,6 @@
 
     form.appendChild(document.createElement('br'));
 
-    // password label
     const passwordLabel = document.createElement('div');
     passwordLabel.textContent = 'password';
     form.appendChild(passwordLabel);
@@ -37,6 +38,31 @@
     form.appendChild(submitButton);
 
     document.body.appendChild(form);
+
+    const todoList = document.createElement('ul');
+    document.body.appendChild(todoList);
+
+    // TODO
+    async function loadTodos() {
+      const response = await axios.get('https://dummyjson.com/todos');
+      const todos = response.data.todos;
+
+      todos.forEach((todo, index) => {
+        const li = document.createElement('li');
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.disabled = true;
+        checkbox.checked = todo.completed;
+
+        li.appendChild(checkbox);
+        li.appendChild(document.createTextNode(`${index + 1}. ${todo.todo}`));
+
+        todoList.appendChild(li);
+      });
+    }
+
+    loadTodos();
   </script>
 </body>
 </html>
